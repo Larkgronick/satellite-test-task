@@ -1,8 +1,9 @@
 import React from "react";
-import {Input} from "antd";
+import { Input, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import 'antd/dist/antd.css';
 import { loadResults } from '../redux/reducers/searchReducer'
+import { useEffect } from "react";
 
 const { Search } = Input;
 
@@ -12,7 +13,13 @@ const Home = () => {
 
     const onSearch = (value: string) => dispatch(loadResults(value));
 
-    return <Search placeholder="input word" onSearch={onSearch} style={{width: 200}}/>;
+    return (
+        <div>
+            <Search placeholder="input word" onSearch={onSearch} style={{width: 200}}/>
+            <Spin spinning/>
+        </div>
+    );
+
 };
 
 export default Home;

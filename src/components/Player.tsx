@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "antd";
+import { PauseOutlined, CaretRightOutlined } from "@ant-design/icons";
 
 interface ButtonProps {
     toggle: () => void;
@@ -25,14 +27,10 @@ const useAudio = (url: string) => {
     return [playing, toggle];
 };
 
-const Player = ({ url } : {url: string}) => {
-    const [playing, toggle] = useAudio(url);
+    const Player = ({ url } : {url: string}) => {
+        const [playing, toggle] = useAudio(url);
 
-    return (
-        <div>
-            <button onClick={toggle as () => void}>{playing ? "Pause" : "Play"}</button>
-        </div>
-    );
-};
+        return <Button shape="circle" onClick={toggle as () => void}>{playing ? <PauseOutlined /> : <CaretRightOutlined />}</Button>
+    };
 
 export default Player;
