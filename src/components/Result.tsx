@@ -1,16 +1,12 @@
-import React from "react";
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Card } from 'antd';
 import Player from "../components/Player"
-
-import { useState } from "react";
 
 interface RootState {
     results: Array<object>;
 }
 
 const Result = () => {
-    const [audio, setAudio] = useState('');
     const response: Array<any> = useSelector((state: RootState) => state.results);
 
     // console.log(response)
@@ -54,7 +50,7 @@ const Result = () => {
             </>
         );
     } else {
-        return <div>No data loaded</div>
+        return <div>No data loaded. Please, try again</div>
     }
 }
 
