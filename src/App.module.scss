@@ -1,0 +1,21 @@
+.page-container {
+    width: 80vw;
+    margin: 0 auto;
+    font-size: 16px;
+
+    .navigation {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .home {
+        display: flex;
+        flex-direction: column;
+
+        .search{
+            margin-bottom: 30px;
+        }
+
+    }
+}
+

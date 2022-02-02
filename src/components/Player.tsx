@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import { PauseOutlined, CaretRightOutlined } from "@ant-design/icons";
 
-interface ButtonProps {
-    toggle: () => void;
-}
-
 const useAudio = (url: string) => {
     const [audio] = useState(new Audio(url));
     const [playing, setPlaying] = useState(false);
@@ -14,7 +10,7 @@ const useAudio = (url: string) => {
     useEffect(() => {
             playing ? audio.play() : audio.pause();
         },
-        [playing]
+        [playing, audio]
     );
 
     useEffect(() => {
@@ -22,7 +18,7 @@ const useAudio = (url: string) => {
         return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
         };
-    }, []);
+    }, [audio]);
 
     return [playing, toggle];
 };

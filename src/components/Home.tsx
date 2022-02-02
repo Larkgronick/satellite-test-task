@@ -2,7 +2,8 @@ import { Input, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import 'antd/dist/antd.css';
 import { loadResults } from '../redux/reducers/searchReducer';
-import { setLoading, setStatus } from  '../redux/actions/actions'
+import { setLoading, setStatus } from  '../redux/actions/actions';
+import styles from '../App.module.scss';
 
 const { Search } = Input;
 
@@ -18,7 +19,7 @@ const Home = () => {
 
     const onSearch = (value: string) => {
         if (value.length === 0) {
-            dispatch(setStatus('Input are empty. Please add something to search'))
+            dispatch(setStatus('Input is empty. Please add something to search'))
         } else {
             dispatch(setStatus('Processing...')) 
             dispatch(setLoading(true))
@@ -27,10 +28,13 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <Search placeholder="input word" onSearch={onSearch} style={{width: 200}}/>
-            <Spin spinning={spinning}/>
-            {status}
+        <div className={styles.home}>
+            <Search className={styles.search} placeholder="input word" onSearch={onSearch} style={{width: 400}}/>
+            <div>
+                <p className={styles.status}>{status}</p>
+                <Spin spinning={spinning} size="large"/>
+            </div>
+
         </div>
     );
 
