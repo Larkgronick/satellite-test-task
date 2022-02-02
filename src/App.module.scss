@@ -21,5 +21,11 @@
     .result-meaning{
         width: 350px;
     }
-}
 
+    @media only screen and (max-width: 768px) {
+        .result-meaning{
+            width: 250px
+        }
+      }
+
+}

@@ -9,7 +9,7 @@ interface ResultCardState {
     origin: string,
     meanings: Array<object>,
     phonetics: Array<any>,
-    key: number
+    key: string
 }
 
 const ResultCard = ({word, phonetic, origin, meanings, phonetics, key} : ResultCardState ) => {
@@ -32,7 +32,7 @@ const ResultCard = ({word, phonetic, origin, meanings, phonetics, key} : ResultC
                 {meanings.map((el: any, i: number) => {
                     const { partOfSpeech, definitions } = el;
                     return ( 
-                        <ResultMeaning partOfSpeech={partOfSpeech} definitions={definitions} key={key}/>
+                        <ResultMeaning partOfSpeech={partOfSpeech} definitions={definitions} key={partOfSpeech+i}/>
                     )
                 })}
             </div>

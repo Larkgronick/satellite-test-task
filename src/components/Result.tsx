@@ -7,6 +7,7 @@ interface RootState {
 
 const Result = () => {
     const response: Array<any> = useSelector((state: RootState) => state.results);
+    const no_data_response = 'No data loaded. Please, search again';
 
     if(response.length > 0 && typeof response !== "string") {
         const search = response[0].word;
@@ -24,7 +25,7 @@ const Result = () => {
                             origin={origin}
                             meanings={meanings}
                             phonetics={phonetics}
-                            key={i}
+                            key={word + i}
                         />
                     )
                 })}
@@ -33,7 +34,7 @@ const Result = () => {
     } else if(typeof response === 'string'){
         return <div>{response}</div>
     }else {
-        return <div>No data loaded. Please, search again</div>
+        return <div>{no_data_response}</div>
     }
 }
 
