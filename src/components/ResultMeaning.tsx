@@ -1,4 +1,5 @@
 import { Card } from 'antd';
+import styles from "../App.module.scss"
 
 interface ResultMeaningState {
     partOfSpeech: string,
@@ -8,7 +9,7 @@ interface ResultMeaningState {
 
 const ResultMeaning = ({partOfSpeech, definitions, key} : ResultMeaningState ) => {
     return (
-        <Card.Grid key={key}>
+        <Card.Grid className={styles["result-meaning"]} key={key}>
             <Card type="inner" title={partOfSpeech} style={{textAlign: 'center'}}>
                 {definitions.map((el: any, i: number) => <Card key={i}>{el.definition}</Card>)}
             </Card>

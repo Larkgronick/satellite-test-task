@@ -36,7 +36,7 @@ export const loadResults = (value) => async (dispatch, getState) => {
             return `'${value}' not found! Please, modify your search`
         }
         return res.json()
-    }).catch(err => console.log(err));
+    }).catch((err) => 'Failed to load data. Try again later');
 
     dispatch(setStatus('Search is completed. See Result Tab'));
     dispatch(setSearchResults(results));

@@ -16,16 +16,14 @@ const Result = () => {
                 <p>Here what we found for '{search}'</p>
                 {response.map((el: any, i:number) => {
                     const { word, phonetic, origin, phonetics, meanings } = el;
-                    const { audio, text } =  phonetics[0];
-
+    
                     return (
                         <ResultCard 
                             word={word}
                             phonetic={phonetic}
                             origin={origin}
                             meanings={meanings}
-                            audio={audio}
-                            text={text}
+                            phonetics={phonetics}
                             key={i}
                         />
                     )

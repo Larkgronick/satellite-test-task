@@ -8,17 +8,26 @@ interface ResultCardState {
     phonetic: string,
     origin: string,
     meanings: Array<object>,
-    audio: string,
-    text: string,
+    phonetics: Array<any>,
     key: number
 }
 
-const ResultCard = ({word, phonetic, origin, meanings, audio, text, key} : ResultCardState ) => {
+const ResultCard = ({word, phonetic, origin, meanings, phonetics, key} : ResultCardState ) => {
+    
+    const hasAudio = () =>  {
+        if (phonetics[0]) {
+            return phonetics[0].hasOwnProperty("audio");
+        } else {
+            return phonetics[0] !== undefined;
+        }
+    }
+    
     return (
         <Card title={word} key={key}>
             <Definition name="Phonetic" definition={phonetic}/>
             <Definition name="Origin" definition={origin} />
-            {audio && <><Player url={'https:' + audio}/><p>{text}</p></>}
+            
+            {hasAudio() && <><Player url={'https:' + phonetics[0].audio}/><p>{phonetics[0].text}</p></>}
             <div>
                 {meanings.map((el: any, i: number) => {
                     const { partOfSpeech, definitions } = el;
