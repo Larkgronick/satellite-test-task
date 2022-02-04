@@ -3,16 +3,6 @@ interface ResultCardState {
     definition: string,
 }
 
-const Definition = ({name, definition} : ResultCardState ) => {
-    let meaning = definition;
-    if (definition === undefined) {
-        meaning = 'no data'
-    } 
-
-    return (
-        <div>
-            <p>{`${name}: ${meaning}`}</p>
-        </div>
-    )};
+const Definition = ({name, definition} : ResultCardState ) => <p>{`${name}: ${definition || 'no data'}`}</p>
 
 export default Definition;

@@ -34,10 +34,8 @@ const Home = () => {
                 <p className={styles.status}>{status}</p>
                 <Spin spinning={spinning} size="large"/>
             </div>
-
         </div>
     );
-
 };
 
 export default Home;

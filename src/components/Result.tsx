@@ -5,7 +5,7 @@ interface RootState {
     results: Array<object>;
 }
 
-const Result = () => {
+const Result:React.FC = () => {
     const response: Array<any> = useSelector((state: RootState) => state.results);
     const no_data_response = 'No data loaded. Please, search again';
 
@@ -15,9 +15,9 @@ const Result = () => {
         return (
             <>
                 <p>Here what we found for '{search}'</p>
-                {response.map((el: any, i:number) => {
+                {response.map((el) => {
                     const { word, phonetic, origin, phonetics, meanings } = el;
-    
+                    
                     return (
                         <ResultCard 
                             word={word}
@@ -25,7 +25,6 @@ const Result = () => {
                             origin={origin}
                             meanings={meanings}
                             phonetics={phonetics}
-                            key={word + i}
                         />
                     )
                 })}
